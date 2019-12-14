@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
 import { uuid } from 'uuidv4';
+import React, { useState, useEffect } from 'react';
+import ComponentOverlay from './component_overlay';
+import toolbox, { CustomComponent } from './toolbox';
 import { Responsive, WidthProvider, Layouts, Layout } from 'react-grid-layout';
 
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 
-interface IContent {
+export interface IContent {
   id: string;
   type: string;
   attributes: any;
@@ -56,6 +58,14 @@ const SmartEditor: React.SFC<SmartEditorProps> = ({
     };
   };
 
+  const onRemoveComponent = (contentToRemove: IContent) => () => {
+    console.log(contentToRemove);
+  };
+
+  const onAddComponent = (componentToAdd: CustomComponent) => () => {
+    console.log(componentToAdd);
+  };
+
   return (
     <ResponsiveGridLayout
       breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
@@ -69,13 +79,12 @@ const SmartEditor: React.SFC<SmartEditorProps> = ({
     >
       {contents.map((content) => (
         <div key={content.id}>
-          {content.attributes.title}
-          {/* <ComponentOverlay
+          <ComponentOverlay
             onRemove={onRemoveComponent}
             onAdd={onAddComponent}
-            component={componentMapper(content.type)}
+            component={toolbox(content.type)}
             content={content}
-          /> */}
+          />
         </div>
       ))}
     </ResponsiveGridLayout>

@@ -3,26 +3,31 @@
   height: inherit !important;
   .react-grid-item {
     transition: all 0.3s ease;
+    position: relative;
     .actions {
       position: absolute;
       top: 5px;
-      left: 0;
-    }
-    .drag-me {
-      cursor: move;
-    }
-    .remove-me {
-      position: absolute;
-      top: 5px;
       right: 0;
+      display: flex;
+      background: #efefef;
+      > span {
+        margin: 5px 10px;
+        cursor: pointer;
+        &.drag-me {
+          cursor: move;
+        }
+      }
+      .add-component {
+      }
+      .remove-component {
+      }
     }
-    .remove-me,
+
     .actions,
     .react-resizable-handle {
       opacity: 0;
     }
     &:hover {
-      .remove-me,
       .actions,
       .react-resizable-handle {
         opacity: 1;

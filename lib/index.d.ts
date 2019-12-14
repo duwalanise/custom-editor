@@ -2,7 +2,7 @@ import React from 'react';
 import { Layouts, Layout } from 'react-grid-layout';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
-interface IContent {
+export interface IContent {
     id: string;
     type: string;
     attributes: any;

@@ -4,26 +4,26 @@
 }
 .editor-layout .react-grid-item {
   transition: all 0.3s ease;
+  position: relative;
 }
 .editor-layout .react-grid-item .actions {
   position: absolute;
   top: 5px;
-  left: 0;
+  right: 0;
+  display: flex;
+  background: #efefef;
 }
-.editor-layout .react-grid-item .drag-me {
+.editor-layout .react-grid-item .actions > span {
+  margin: 5px 10px;
+  cursor: pointer;
+}
+.editor-layout .react-grid-item .actions > span.drag-me {
   cursor: move;
 }
-.editor-layout .react-grid-item .remove-me {
-  position: absolute;
-  top: 5px;
-  right: 0;
-}
-.editor-layout .react-grid-item .remove-me,
 .editor-layout .react-grid-item .actions,
 .editor-layout .react-grid-item .react-resizable-handle {
   opacity: 0;
 }
-.editor-layout .react-grid-item:hover .remove-me,
 .editor-layout .react-grid-item:hover .actions,
 .editor-layout .react-grid-item:hover .react-resizable-handle {
   opacity: 1;

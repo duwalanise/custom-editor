@@ -18,7 +18,7 @@ const App: React.FC = () => {
             content: {
               id: 'b',
               type: 'paragraph',
-              attributes: { title: 'First Component' },
+              attributes: { title: 'First Component test' },
             },
           },
         ]}
