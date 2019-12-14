@@ -6,6 +6,7 @@
   "types": "lib",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "sass src/index.scss lib/index.css",
     "build": "tsc -p .",
     "start": "cd example && npm start"
   },
@@ -13,11 +14,16 @@
   "author": "",
   "license": "ISC",
   "peerDependencies": {
-    "react": ">=16.0.0"
+    "react": ">=16.12.0",
+    "react-dom": ">=16.12.0"
   },
   "devDependencies": {
-    "@types/react": "^16.9.16",
-    "react": "^16.12.0",
+    "@types/react-grid-layout": "^0.17.0",
+    "sass": "^1.23.7",
     "typescript": "^3.7.3"
+  },
+  "dependencies": {
+    "react-grid-layout": "^0.17.1",
+    "uuidv4": "^6.0.0"
   }
 }
