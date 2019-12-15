@@ -61,7 +61,8 @@ const SmartEditor: React.SFC<SmartEditorProps> = ({
   };
 
   const onRemoveComponent = (contentToRemove: IContent) => () => {
-    console.log(contentToRemove);
+    setLayouts(layouts.filter((l) => l.i !== contentToRemove.id));
+    setContents(contents.filter((c) => c.id !== contentToRemove.id));
   };
 
   const onAddComponent = (componentToAdd: CustomComponent) => () => {
