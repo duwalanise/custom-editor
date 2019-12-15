@@ -1,5 +1,7 @@
 import { IContent } from './index';
 import { Layout } from 'react-grid-layout';
+import paragraph from './components/paragraph';
+import heading from './components/heading';
 
 export interface CustomComponent {
   title: string;
@@ -14,14 +16,8 @@ interface CustomComponents {
 
 // add custom created components over here
 export const CustomComponents: CustomComponents = {
-  paragraph: {
-    title: 'Paragraph',
-    defaultLayout: { x: 1, y: 0, w: 100, h: 5 },
-    defaultContent: { type: 'paragraph', attributes: { title: 'Hello there' } },
-    render: (attributes: any) => {
-      return attributes.title;
-    },
-  },
+  paragraph,
+  heading,
 };
 
 export default (type: string) => {

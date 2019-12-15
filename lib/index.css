@@ -1,3 +1,20 @@
+.component-options {
+  position: absolute;
+  right: 0;
+  top: 30px;
+  list-style: none;
+  width: 200px;
+  max-height: 400px;
+  overflow: auto;
+  padding: 10px;
+  box-shadow: 0px 0px 16px rgba(3, 3, 3, 0.08);
+}
+.component-options li {
+  color: #333333;
+  padding: 10px;
+  cursor: pointer;
+}
+
 .editor-layout {
   flex: 1;
   height: inherit !important;
@@ -27,6 +44,28 @@
 .editor-layout .react-grid-item:hover .actions,
 .editor-layout .react-grid-item:hover .react-resizable-handle {
   opacity: 1;
+}
+
+.add-component-wrapper {
+  flex: 1;
+  height: inherit;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.add-component-wrapper .add-component {
+  position: relative;
+}
+.add-component-wrapper .add-component .add-btn {
+  border: solid 1px #ccc;
+  color: #ffffff;
+  font-size: 20px;
+  background: #fca902;
+  padding: 10px 30px;
+  outline: none;
+}
+.add-component-wrapper .add-component .add-btn:focus {
+  outline: none;
 }
 
 /*# sourceMappingURL=index.css.map */

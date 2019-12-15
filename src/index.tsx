@@ -6,6 +6,7 @@ import { Responsive, WidthProvider, Layouts, Layout } from 'react-grid-layout';
 
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
+import ComponentOptions from './container/component_options';
 
 export interface IContent {
   id: string;
@@ -26,6 +27,7 @@ const SmartEditor: React.SFC<SmartEditorProps> = ({
   onLayoutChange,
   editorComponents,
 }) => {
+  const [showOption, setShowOptions] = useState<boolean>(false);
   const [layouts, setLayouts] = useState<Layout[]>([]);
   const [contents, setContents] = useState<IContent[]>([]);
 
@@ -63,8 +65,35 @@ const SmartEditor: React.SFC<SmartEditorProps> = ({
   };
 
   const onAddComponent = (componentToAdd: CustomComponent) => () => {
-    console.log(componentToAdd);
+    const id = uuid();
+    const newLayout: Layout = {
+      ...componentToAdd.defaultLayout,
+      i: id,
+    } as Layout;
+    const newContent: IContent = {
+      ...componentToAdd.defaultContent,
+      id,
+    } as IContent;
+
+    setLayouts(layouts.concat(newLayout));
+    setContents(contents.concat(newContent));
   };
+
+  if (!layouts.length) {
+    return (
+      <div className="add-component-wrapper">
+        <div className="add-component">
+          <button
+            className="add-btn"
+            onClick={() => setShowOptions(!showOption)}
+          >
+            Add Component
+          </button>
+          {showOption && <ComponentOptions onSelect={onAddComponent} />}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <ResponsiveGridLayout

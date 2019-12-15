@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CustomComponent } from './toolbox';
 import { IContent } from '.';
+import ComponentOptions from './container/component_options';
 
 interface ComponentOverlayProps {
   component: CustomComponent;
@@ -14,15 +15,24 @@ const ComponentOverlay: React.FC<ComponentOverlayProps> = ({
   content,
   onRemove,
   onAdd,
-}) => (
-  <div className="component-overlay">
-    {component.render(content.attributes)}
-    <div className="actions">
-      <span className="drag-me">#</span>
-      <span onClick={onAdd(component)}>+</span>
-      <span onClick={onRemove(content)}>X</span>
+}) => {
+  const [showOption, setShowOption] = useState<boolean>(false);
+
+  const onAddComponent = (comp: CustomComponent) => () => {
+    setShowOption(false);
+    onAdd(comp)();
+  };
+  return (
+    <div className="component-overlay">
+      {component.render(content.attributes)}
+      <div className="actions">
+        <span className="drag-me">#</span>
+        <span onClick={() => setShowOption(!showOption)}>+</span>
+        <span onClick={onRemove(content)}>X</span>
+      </div>
+      {showOption && <ComponentOptions onSelect={onAddComponent} />}
     </div>
-  </div>
-);
+  );
+};
 
 export default ComponentOverlay;

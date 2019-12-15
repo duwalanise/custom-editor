@@ -11,19 +11,7 @@ const App: React.FC = () => {
   };
   return (
     <div className="App">
-      <SmartEditor
-        editorComponents={[
-          {
-            layout: { i: 'b', x: 1, y: 0, w: 100, h: 5 },
-            content: {
-              id: 'b',
-              type: 'paragraph',
-              attributes: { title: 'First Component test' },
-            },
-          },
-        ]}
-        onLayoutChange={onLayoutChange}
-      />
+      <SmartEditor editorComponents={[]} onLayoutChange={onLayoutChange} />
     </div>
   );
 };
