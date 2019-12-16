@@ -30,6 +30,7 @@ const SmartEditor: React.SFC<SmartEditorProps> = ({
   const [showOption, setShowOptions] = useState<boolean>(false);
   const [layouts, setLayouts] = useState<Layout[]>([]);
   const [contents, setContents] = useState<IContent[]>([]);
+  const [active, setActive] = useState<string | null>(null);
 
   useEffect(() => {
     let accumulator: { layouts: Layout[]; contents: IContent[] } = {
@@ -80,6 +81,16 @@ const SmartEditor: React.SFC<SmartEditorProps> = ({
     setContents(contents.concat(newContent));
   };
 
+  const handleLayoutChange = (layout: Layout[], allLayouts: Layouts) => {
+    setLayouts(layout);
+    onLayoutChange(layout, allLayouts);
+  };
+
+  const handleSetActive = (id: string) => () => {
+    console.log(id);
+    setActive(id);
+  };
+
   if (!layouts.length) {
     return (
       <div className="add-component-wrapper">
@@ -100,18 +111,18 @@ const SmartEditor: React.SFC<SmartEditorProps> = ({
     <ResponsiveGridLayout
       breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
       cols={{ lg: 100, md: 80, sm: 60, xs: 40, xxs: 20 }}
-      verticalCompact={false}
       className="editor-layout"
       layouts={getLayout(layouts)}
       rowHeight={20}
-      onLayoutChange={onLayoutChange}
+      onLayoutChange={handleLayoutChange}
       draggableHandle=".drag-me"
     >
       {contents.map((content) => (
-        <div key={content.id}>
+        <div key={content.id} onClick={handleSetActive(content.id)}>
           <ComponentOverlay
             onRemove={onRemoveComponent}
             onAdd={onAddComponent}
+            isActive={active === content.id}
             component={toolbox(content.type)}
             content={content}
           />

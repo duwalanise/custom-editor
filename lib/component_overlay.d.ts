@@ -4,6 +4,7 @@ import { IContent } from '.';
 interface ComponentOverlayProps {
     component: CustomComponent;
     content: IContent;
+    isActive: boolean;
     onAdd: (component: CustomComponent) => () => void;
     onRemove: (content: IContent) => () => void;
 }

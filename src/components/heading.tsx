@@ -1,7 +1,13 @@
 import React from 'react';
 import { CustomComponent } from '../toolbox';
 
-const Heading: React.FC<{ attributes: any }> = ({ attributes }) => {
+const Heading: React.FC<{ attributes: any; isActive?: boolean }> = ({
+  attributes,
+  isActive,
+}) => {
+  if (isActive) {
+    return <input type="text" value={attributes.title} onChange={() => null} />;
+  }
   return <h1>{attributes.title}</h1>;
 };
 
@@ -12,5 +18,5 @@ export default ({
     type: 'heading',
     attributes: { title: 'This is a new Heading' },
   },
-  render: (attributes: any) => <Heading attributes={attributes} />,
+  render: Heading,
 } as unknown) as CustomComponent;

@@ -6,6 +6,7 @@ import ComponentOptions from './container/component_options';
 interface ComponentOverlayProps {
   component: CustomComponent;
   content: IContent;
+  isActive: boolean;
   onAdd: (component: CustomComponent) => () => void;
   onRemove: (content: IContent) => () => void;
 }
@@ -15,16 +16,17 @@ const ComponentOverlay: React.FC<ComponentOverlayProps> = ({
   content,
   onRemove,
   onAdd,
+  isActive,
 }) => {
   const [showOption, setShowOption] = useState<boolean>(false);
-
   const onAddComponent = (comp: CustomComponent) => () => {
     setShowOption(false);
     onAdd(comp)();
   };
+
   return (
     <div className="component-overlay">
-      {component.render(content.attributes)}
+      <component.render attributes={content.attributes} isActive={isActive} />
       <div className="actions">
         <span className="drag-me">#</span>
         <span onClick={() => setShowOption(!showOption)}>+</span>

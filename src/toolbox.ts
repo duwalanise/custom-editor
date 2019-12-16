@@ -7,7 +7,7 @@ export interface CustomComponent {
   title: string;
   defaultLayout: Partial<Layout>;
   defaultContent: Partial<IContent>;
-  render: (attributes: any) => React.Component;
+  render: React.ComponentType<any>;
 }
 
 interface CustomComponents {
