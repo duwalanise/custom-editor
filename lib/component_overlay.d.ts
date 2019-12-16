@@ -7,6 +7,7 @@ interface ComponentOverlayProps {
     isActive: boolean;
     onAdd: (component: CustomComponent) => () => void;
     onRemove: (content: IContent) => () => void;
+    onChangeContent: (content: IContent) => void;
 }
 declare const ComponentOverlay: React.FC<ComponentOverlayProps>;
 export default ComponentOverlay;

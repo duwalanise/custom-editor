@@ -3,11 +3,17 @@ import { Layout } from 'react-grid-layout';
 import paragraph from './components/paragraph';
 import heading from './components/heading';
 
+export interface CustomComponentRenderProps {
+  content: IContent;
+  isActive?: boolean;
+  onChangeContent: (content: IContent) => void;
+}
+
 export interface CustomComponent {
   title: string;
   defaultLayout: Partial<Layout>;
   defaultContent: Partial<IContent>;
-  render: React.ComponentType<any>;
+  render: React.ComponentType<CustomComponentRenderProps>;
 }
 
 interface CustomComponents {

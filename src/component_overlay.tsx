@@ -9,6 +9,7 @@ interface ComponentOverlayProps {
   isActive: boolean;
   onAdd: (component: CustomComponent) => () => void;
   onRemove: (content: IContent) => () => void;
+  onChangeContent: (content: IContent) => void;
 }
 
 const ComponentOverlay: React.FC<ComponentOverlayProps> = ({
@@ -17,6 +18,7 @@ const ComponentOverlay: React.FC<ComponentOverlayProps> = ({
   onRemove,
   onAdd,
   isActive,
+  onChangeContent,
 }) => {
   const [showOption, setShowOption] = useState<boolean>(false);
   const onAddComponent = (comp: CustomComponent) => () => {
@@ -26,8 +28,12 @@ const ComponentOverlay: React.FC<ComponentOverlayProps> = ({
 
   return (
     <div className="component-overlay">
-      <component.render attributes={content.attributes} isActive={isActive} />
-      <div className="actions">
+      <component.render
+        content={content}
+        isActive={isActive}
+        onChangeContent={onChangeContent}
+      />
+      <div className="actions" onClick={(e) => e.stopPropagation()}>
         <span className="drag-me">#</span>
         <span onClick={() => setShowOption(!showOption)}>+</span>
         <span onClick={onRemove(content)}>X</span>

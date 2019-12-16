@@ -23,6 +23,15 @@
   transition: all 0.3s ease;
   position: relative;
 }
+.editor-layout .react-grid-item .component-overlay {
+  height: inherit;
+}
+.editor-layout .react-grid-item .component-overlay > textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+}
 .editor-layout .react-grid-item .actions {
   position: absolute;
   top: 5px;

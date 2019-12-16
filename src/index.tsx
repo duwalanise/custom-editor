@@ -86,8 +86,16 @@ const SmartEditor: React.SFC<SmartEditorProps> = ({
     onLayoutChange(layout, allLayouts);
   };
 
+  const onChangeContent = (newContent: IContent) => {
+    setContents(
+      contents.map((c) => {
+        return c.id === newContent.id ? newContent : c;
+      }),
+    );
+    setActive(null);
+  };
+
   const handleSetActive = (id: string) => () => {
-    console.log(id);
     setActive(id);
   };
 
@@ -121,6 +129,7 @@ const SmartEditor: React.SFC<SmartEditorProps> = ({
         <div key={content.id} onClick={handleSetActive(content.id)}>
           <ComponentOverlay
             onRemove={onRemoveComponent}
+            onChangeContent={onChangeContent}
             onAdd={onAddComponent}
             isActive={active === content.id}
             component={toolbox(content.type)}
