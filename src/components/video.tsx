@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { CustomComponent, CustomComponentRenderProps } from '../toolbox';
-import { IContent } from '..';
 
-const Heading: React.FC<CustomComponentRenderProps> = ({
+const Video: React.FC<CustomComponentRenderProps> = ({
   content,
   isActive,
   onChangeContent,
@@ -11,6 +10,14 @@ const Heading: React.FC<CustomComponentRenderProps> = ({
   const handleChange = (ev: any) => {
     setTitle(ev.target.value);
   };
+
+  const getId = () => {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = (content.attributes.title || '').match(regExp);
+
+    return match && match[2].length === 11 ? match[2] : null;
+  };
+
   const hanldeKeyDown = (ev: any) => {
     if (ev.keyCode === 13) {
       onChangeContent({
@@ -19,25 +26,32 @@ const Heading: React.FC<CustomComponentRenderProps> = ({
       });
     }
   };
-  if (isActive) {
+  if (!getId()) {
     return (
-      <textarea
+      <input
         value={title}
         onChange={handleChange}
         onKeyDown={hanldeKeyDown}
-        style={{ fontSize: '2em', fontWeight: 'bold' }}
+        placeholder="Paste link of youtube video"
       />
     );
   }
-  return <h1>{content.attributes.title}</h1>;
+
+  return (
+    <iframe
+      src={`//www.youtube.com/embed/${getId()}`}
+      frameBorder="0"
+      allowFullScreen
+    ></iframe>
+  );
 };
 
 export default ({
-  title: 'Heading',
-  defaultLayout: { w: 100, h: 3 },
+  title: 'Video',
+  defaultLayout: { w: 40, h: 10 },
   defaultContent: {
-    type: 'heading',
-    attributes: { title: 'This is a new Heading' },
+    type: 'video',
+    attributes: {},
   },
-  render: Heading,
+  render: Video,
 } as unknown) as CustomComponent;

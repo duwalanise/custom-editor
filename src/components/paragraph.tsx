@@ -27,6 +27,7 @@ const Paragraph: React.FC<CustomComponentRenderProps> = ({
         value={title}
         onChange={handleChange}
         onKeyDown={hanldeKeyDown}
+        style={{ fontSize: '1em' }}
       />
     );
   }
@@ -35,7 +36,7 @@ const Paragraph: React.FC<CustomComponentRenderProps> = ({
 
 export default ({
   title: 'Paragraph',
-  defaultLayout: { x: 1, y: 0, w: 100, h: 5 },
+  defaultLayout: { w: 100, h: 2 },
   defaultContent: {
     type: 'paragraph',
     attributes: { title: 'This is a new Paragraph' },

@@ -2,7 +2,7 @@ import React from 'react';
 import { CustomComponents, CustomComponent } from '../toolbox';
 
 interface ComponentOptionsProps {
-  onSelect: (component: CustomComponent) => () => void;
+  onSelect: (component: CustomComponent) => (e: any) => void;
 }
 
 const ComponentOptions: React.FC<ComponentOptionsProps> = ({ onSelect }) => {

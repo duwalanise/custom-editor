@@ -71,6 +71,8 @@ const SmartEditor: React.SFC<SmartEditorProps> = ({
     const newLayout: Layout = {
       ...componentToAdd.defaultLayout,
       i: id,
+      x: 0,
+      y: 0,
     } as Layout;
     const newContent: IContent = {
       ...componentToAdd.defaultContent,

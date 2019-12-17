@@ -21,7 +21,8 @@ const ComponentOverlay: React.FC<ComponentOverlayProps> = ({
   onChangeContent,
 }) => {
   const [showOption, setShowOption] = useState<boolean>(false);
-  const onAddComponent = (comp: CustomComponent) => () => {
+  const onAddComponent = (comp: CustomComponent) => (e: any) => {
+    e.stopPropagation();
     setShowOption(false);
     onAdd(comp)();
   };
