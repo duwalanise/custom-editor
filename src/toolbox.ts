@@ -3,6 +3,7 @@ import { Layout } from 'react-grid-layout';
 import paragraph from './components/paragraph';
 import heading from './components/heading';
 import video from './components/video';
+import todo from './components/todo';
 
 export interface CustomComponentRenderProps {
   content: IContent;
@@ -26,6 +27,7 @@ export const CustomComponents: CustomComponents = {
   paragraph,
   heading,
   video,
+  todo,
 };
 
 export default (type: string) => {

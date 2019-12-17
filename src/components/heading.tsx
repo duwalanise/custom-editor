@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { CustomComponent, CustomComponentRenderProps } from '../toolbox';
-import { IContent } from '..';
 
 const Heading: React.FC<CustomComponentRenderProps> = ({
   content,

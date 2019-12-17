@@ -17,6 +17,52 @@
   cursor: pointer;
 }
 
+.checkbox-wrapper {
+  font-size: 20px;
+  display: flex;
+}
+.checkbox-wrapper .sc-checkbox {
+  -webkit-appearance: none;
+  border: 2px solid #807f7f;
+  border-radius: 3px;
+  display: inline-block;
+  position: relative;
+  height: 20px;
+  width: 20px;
+  outline: none;
+}
+.checkbox-wrapper .sc-checkbox:checked {
+  border: 2px solid #6fcf97;
+}
+.checkbox-wrapper .sc-checkbox:checked:before {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 12px;
+  background-color: #6fcf97;
+  left: 8px;
+  top: 2px;
+  transform: rotate(45deg);
+}
+.checkbox-wrapper .sc-checkbox:checked:after {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 3px;
+  background-color: #6fcf97;
+  left: 1px;
+  top: 8px;
+  transform: rotate(45deg);
+}
+.checkbox-wrapper .sc-input-text {
+  flex: 1;
+  padding: 0 10px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: #807f7f;
+}
+
 .editor-layout {
   flex: 1;
   height: inherit !important;
