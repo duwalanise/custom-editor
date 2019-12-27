@@ -1,9 +1,12 @@
 import { IContent } from './index';
 import { Layout } from 'react-grid-layout';
-import paragraph from './components/paragraph';
-import heading from './components/heading';
-import video from './components/video';
-import todo from './components/todo';
+import Paragraph from './components/paragraph';
+import Heading from './components/heading';
+import Video from './components/video';
+import Todo from './components/todo';
+import File from './components/files';
+import Image from './components/image';
+import FroalaEditor from './components/editor';
 
 export interface CustomComponentRenderProps {
   content: IContent;
@@ -24,10 +27,13 @@ interface CustomComponents {
 
 // add custom created components over here
 export const CustomComponents: CustomComponents = {
-  paragraph,
-  heading,
-  video,
-  todo,
+  Paragraph,
+  Heading,
+  Video,
+  Todo,
+  FroalaEditor,
+  File,
+  Image,
 };
 
 export default (type: string) => {

@@ -1,0 +1,20 @@
+.upload-file-button {
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  width: 100px;
+  height: 40px;
+  background: #ffffff;
+  border: solid 1px #ccc;
+  position: absolute;
+  top: calc(50% - 30px);
+  right: calc(50% - 70px);
+  &.hide-button {
+    display: none;
+  }
+}
+.file-image-tag {
+  width: 100%;
+  height: auto;
+  z-index: 10;
+}

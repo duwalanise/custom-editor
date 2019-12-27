@@ -19,6 +19,7 @@ interface SmartEditorProps {
     content: IContent;
   }[];
   onLayoutChange: (layout: Layout[], allLayouts: Layouts) => void;
+  onContentChange: (content: IContent[]) => void;
 }
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -26,6 +27,7 @@ const ResponsiveGridLayout = WidthProvider(Responsive);
 const SmartEditor: React.SFC<SmartEditorProps> = ({
   onLayoutChange,
   editorComponents,
+  onContentChange,
 }) => {
   const [showOption, setShowOptions] = useState<boolean>(false);
   const [layouts, setLayouts] = useState<Layout[]>([]);
@@ -94,6 +96,7 @@ const SmartEditor: React.SFC<SmartEditorProps> = ({
         return c.id === newContent.id ? newContent : c;
       }),
     );
+    onContentChange(contents);
     setActive(null);
   };
 

@@ -8,6 +8,8 @@
     position: relative;
     .component-overlay {
       height: inherit;
+      overflow: auto;
+
       > textarea,
       > input,
       > iframe {
@@ -44,6 +46,7 @@
       .actions,
       .react-resizable-handle {
         opacity: 1;
+        z-index: 10;
       }
     }
   }

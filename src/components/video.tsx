@@ -50,7 +50,7 @@ export default ({
   title: 'Video',
   defaultLayout: { w: 40, h: 10 },
   defaultContent: {
-    type: 'video',
+    type: 'Video',
     attributes: {},
   },
   render: Video,

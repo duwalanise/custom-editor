@@ -63,6 +63,28 @@
   color: #807f7f;
 }
 
+.upload-file-button {
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  width: 100px;
+  height: 40px;
+  background: #ffffff;
+  border: solid 1px #ccc;
+  position: absolute;
+  top: calc(50% - 30px);
+  right: calc(50% - 70px);
+}
+.upload-file-button.hide-button {
+  display: none;
+}
+
+.file-image-tag {
+  width: 100%;
+  height: auto;
+  z-index: 10;
+}
+
 .editor-layout {
   flex: 1;
   height: inherit !important;
@@ -73,6 +95,7 @@
 }
 .editor-layout .react-grid-item .component-overlay {
   height: inherit;
+  overflow: auto;
 }
 .editor-layout .react-grid-item .component-overlay > textarea,
 .editor-layout .react-grid-item .component-overlay > input,
@@ -103,6 +126,7 @@
 .editor-layout .react-grid-item:hover .actions,
 .editor-layout .react-grid-item:hover .react-resizable-handle {
   opacity: 1;
+  z-index: 10;
 }
 
 .add-component-wrapper {

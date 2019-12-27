@@ -38,7 +38,7 @@ export default ({
   title: 'Paragraph',
   defaultLayout: { w: 100, h: 2 },
   defaultContent: {
-    type: 'paragraph',
+    type: 'Paragraph',
     attributes: { title: 'This is a new Paragraph' },
   },
   render: Paragraph,

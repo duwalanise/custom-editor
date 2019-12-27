@@ -13,6 +13,7 @@ interface SmartEditorProps {
         content: IContent;
     }[];
     onLayoutChange: (layout: Layout[], allLayouts: Layouts) => void;
+    onContentChange: (content: IContent[]) => void;
 }
 declare const SmartEditor: React.SFC<SmartEditorProps>;
 export { SmartEditor };

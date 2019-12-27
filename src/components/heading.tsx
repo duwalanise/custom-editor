@@ -35,7 +35,7 @@ export default ({
   title: 'Heading',
   defaultLayout: { w: 100, h: 3 },
   defaultContent: {
-    type: 'heading',
+    type: 'Heading',
     attributes: { title: 'This is a new Heading' },
   },
   render: Heading,

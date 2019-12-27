@@ -115,7 +115,7 @@ export default ({
   title: 'Todo',
   defaultLayout: { w: 100, h: 3 },
   defaultContent: {
-    type: 'todo',
+    type: 'Todo',
     attributes: { title: 'This is a new Heading' },
   },
   render: Todo,
