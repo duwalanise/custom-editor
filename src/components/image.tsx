@@ -16,6 +16,9 @@ const Image: React.FC<CustomComponentRenderProps> = ({
   onChangeContent,
 }) => {
   const image = content.attributes.image;
+  const fileStackApi =
+    process.env.REACT_APP_FILESTACK_API_KEY ||
+    (window as any).FILESTACK_API_KEY;
 
   const onSuccess = (newImage: IFile) => {
     onChangeContent({
@@ -34,7 +37,7 @@ const Image: React.FC<CustomComponentRenderProps> = ({
   if (!image || isActive) {
     return (
       <ReactFilepicker
-        apikey={process.env.REACT_APP_FILESTACK_API_KEY}
+        apikey={fileStackApi}
         onSuccess={onSuccess}
         buttonText="Upload"
         buttonClass={`upload-file-button ${!!image && 'hide-button'}`}

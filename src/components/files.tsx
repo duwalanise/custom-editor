@@ -14,6 +14,9 @@ const File: React.FC<CustomComponentRenderProps> = ({
   onChangeContent,
 }) => {
   const file = content.attributes.file;
+  const fileStackApi =
+    process.env.REACT_APP_FILESTACK_API_KEY ||
+    (window as any).FILESTACK_API_KEY;
   // {
   //   url: '',
   //   filename: 'hello.pdf',
@@ -37,7 +40,7 @@ const File: React.FC<CustomComponentRenderProps> = ({
   if (!file) {
     return (
       <ReactFilepicker
-        apikey={process.env.REACT_APP_FILESTACK_API_KEY}
+        apikey={fileStackApi}
         onSuccess={onSuccess}
         buttonText="Upload"
       />
