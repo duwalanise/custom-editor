@@ -35,14 +35,15 @@ const File: React.FC<CustomComponentRenderProps> = ({
         apikey={process.env.REACT_APP_FILESTACK_API_KEY}
         onSuccess={onSuccess}
         buttonText="Upload"
-        buttonClass="upload-file-button"
       />
     );
   }
 
   return (
     <div>
-      <a href={file.url}>{file.filename}</a>
+      <a href={file.url} target="_blank">
+        {file.filename}
+      </a>
     </div>
   );
 };
