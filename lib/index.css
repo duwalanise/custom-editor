@@ -85,6 +85,28 @@
   z-index: 10;
 }
 
+.file-wrapper {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+}
+.file-wrapper > img {
+  width: 20px;
+  height: auto;
+}
+.file-wrapper > a {
+  text-decoration: none;
+  flex: 1 1;
+  font-size: 20px;
+  color: #333333;
+  margin-left: 5px;
+}
+.file-wrapper > a:hover {
+  color: #00a0c6;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .editor-layout {
   flex: 1;
   height: inherit !important;
@@ -113,11 +135,19 @@
   background: #efefef;
 }
 .editor-layout .react-grid-item .actions > span {
-  margin: 5px 10px;
+  margin: 7px;
   cursor: pointer;
 }
 .editor-layout .react-grid-item .actions > span.drag-me {
   cursor: move;
+}
+.editor-layout .react-grid-item .actions > span > img {
+  height: 13px;
+  width: auto;
+  transition: scale 0.3s ease;
+}
+.editor-layout .react-grid-item .actions > span > img:hover {
+  transform: scale(1.2);
 }
 .editor-layout .react-grid-item .actions,
 .editor-layout .react-grid-item .react-resizable-handle {

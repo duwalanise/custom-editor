@@ -14,6 +14,11 @@ const File: React.FC<CustomComponentRenderProps> = ({
   onChangeContent,
 }) => {
   const file = content.attributes.file;
+  // {
+  //   url: '',
+  //   filename: 'hello.pdf',
+  //   mimetype: 'any',
+  // };
 
   const onSuccess = (newFile: IFile) => {
     onChangeContent({
@@ -40,7 +45,8 @@ const File: React.FC<CustomComponentRenderProps> = ({
   }
 
   return (
-    <div>
+    <div className="file-wrapper">
+      <img src={require('../images/file.png')} alt="" />
       <a href={file.url} target="_blank">
         {file.filename}
       </a>

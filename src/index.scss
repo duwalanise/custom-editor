@@ -26,10 +26,18 @@
       display: flex;
       background: #efefef;
       > span {
-        margin: 5px 10px;
+        margin: 7px;
         cursor: pointer;
         &.drag-me {
           cursor: move;
+        }
+        > img {
+          height: 13px;
+          width: auto;
+          transition: scale 0.3s ease;
+          &:hover {
+            transform: scale(1.2);
+          }
         }
       }
       .add-component {

@@ -18,3 +18,24 @@
   height: auto;
   z-index: 10;
 }
+.file-wrapper {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  > img {
+    width: 20px;
+    height: auto;
+  }
+  > a {
+    text-decoration: none;
+    flex: 1 1;
+    font-size: 20px;
+    color: #333333;
+    margin-left: 5px;
+    &:hover {
+      color: #00a0c6;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+}
