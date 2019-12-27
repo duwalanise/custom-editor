@@ -46,7 +46,7 @@ const File: React.FC<CustomComponentRenderProps> = ({
 
   return (
     <div className="file-wrapper">
-      <img src={require('../images/file.png')} alt="" />
+      {/* <img src={require('../images/file.png')} alt="" /> */}
       <a href={file.url} target="_blank">
         {file.filename}
       </a>

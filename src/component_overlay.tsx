@@ -35,15 +35,9 @@ const ComponentOverlay: React.FC<ComponentOverlayProps> = ({
         onChangeContent={onChangeContent}
       />
       <div className="actions" onClick={(e) => e.stopPropagation()}>
-        <span className="drag-me">
-          <img src={require('./images/drag.png')} alt="" />
-        </span>
-        <span onClick={() => setShowOption(!showOption)}>
-          <img src={require('./images/add.png')} alt="" />
-        </span>
-        <span onClick={onRemove(content)}>
-          <img src={require('./images/close.png')} alt="" />
-        </span>
+        <span className="drag-me">#</span>
+        <span onClick={() => setShowOption(!showOption)}>+</span>
+        <span onClick={onRemove(content)}>x</span>
       </div>
       {showOption && <ComponentOptions onSelect={onAddComponent} />}
     </div>

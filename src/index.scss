@@ -31,13 +31,9 @@
         &.drag-me {
           cursor: move;
         }
-        > img {
-          height: 13px;
-          width: auto;
-          transition: scale 0.3s ease;
-          &:hover {
-            transform: scale(1.2);
-          }
+        transition: scale 0.3s ease;
+        &:hover {
+          transform: scale(1.2);
         }
       }
       .add-component {

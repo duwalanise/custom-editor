@@ -137,16 +137,12 @@
 .editor-layout .react-grid-item .actions > span {
   margin: 7px;
   cursor: pointer;
+  transition: scale 0.3s ease;
 }
 .editor-layout .react-grid-item .actions > span.drag-me {
   cursor: move;
 }
-.editor-layout .react-grid-item .actions > span > img {
-  height: 13px;
-  width: auto;
-  transition: scale 0.3s ease;
-}
-.editor-layout .react-grid-item .actions > span > img:hover {
+.editor-layout .react-grid-item .actions > span:hover {
   transform: scale(1.2);
 }
 .editor-layout .react-grid-item .actions,
