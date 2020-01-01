@@ -9,9 +9,9 @@ export interface IContent {
 }
 interface SmartEditorProps {
     editorComponents: {
-        layout: Layout;
-        content: IContent;
-    }[];
+        layouts: Layout[];
+        contents: IContent[];
+    };
     onLayoutChange: (layout: Layout[], allLayouts: Layouts) => void;
     onContentChange: (content: IContent[]) => void;
 }

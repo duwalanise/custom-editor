@@ -15,9 +15,9 @@ export interface IContent {
 }
 interface SmartEditorProps {
   editorComponents: {
-    layout: Layout;
-    content: IContent;
-  }[];
+    layouts: Layout[];
+    contents: IContent[];
+  };
   onLayoutChange: (layout: Layout[], allLayouts: Layouts) => void;
   onContentChange: (content: IContent[]) => void;
 }
@@ -35,22 +35,22 @@ const SmartEditor: React.SFC<SmartEditorProps> = ({
   const [active, setActive] = useState<string | null>(null);
 
   useEffect(() => {
-    let accumulator: { layouts: Layout[]; contents: IContent[] } = {
-      layouts: [],
-      contents: [],
-    };
+    // let accumulator: { layouts: Layout[]; contents: IContent[] } = {
+    //   layouts: [],
+    //   contents: [],
+    // };
 
-    accumulator = editorComponents.reduce(
-      (acc, ec) => {
-        acc.layouts.push(ec.layout);
-        acc.contents.push(ec.content);
-        return acc;
-      },
-      { ...accumulator },
-    );
+    // accumulator = editorComponents.reduce(
+    //   (acc, ec) => {
+    //     acc.layouts.push(ec.layout);
+    //     acc.contents.push(ec.content);
+    //     return acc;
+    //   },
+    //   { ...accumulator },
+    // );
 
-    setLayouts(accumulator.layouts);
-    setContents(accumulator.contents);
+    setLayouts(editorComponents.layouts);
+    setContents(editorComponents.contents);
   }, []);
 
   const getLayout = (layouts: Layout[]): Layouts => {

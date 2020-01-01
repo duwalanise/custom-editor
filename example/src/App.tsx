@@ -16,7 +16,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <SmartEditor
-        editorComponents={[]}
+        editorComponents={{ layouts: [], contents: [] }}
         onLayoutChange={onLayoutChange}
         onContentChange={onContentChange}
       />
