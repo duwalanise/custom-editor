@@ -6,19 +6,14 @@ import './App.css';
 import '../../lib/index.css';
 
 const App: React.FC = () => {
-  const onLayoutChange = (currentLayout: Layout[], allLayouts: Layouts) => {
-    // console.log(currentLayout);
-  };
-
-  const onContentChange = (currentContent: any) => {
+  const onChange = (currentContent: any) => {
     console.log(currentContent);
   };
   return (
     <div className="App">
       <SmartEditor
         editorComponents={{ layouts: [], contents: [] }}
-        onLayoutChange={onLayoutChange}
-        onContentChange={onContentChange}
+        onChange={onChange}
       />
     </div>
   );

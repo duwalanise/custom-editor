@@ -13,21 +13,21 @@ export interface IContent {
   type: string;
   attributes: any;
 }
+
+interface IComponent {
+  layouts: Layout[];
+  contents: IContent[];
+}
 interface SmartEditorProps {
-  editorComponents: {
-    layouts: Layout[];
-    contents: IContent[];
-  };
-  onLayoutChange: (layout: Layout[], allLayouts: Layouts) => void;
-  onContentChange: (content: IContent[]) => void;
+  editorComponents: IComponent;
+  onChange: (newComponent: IComponent) => void;
 }
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 const SmartEditor: React.SFC<SmartEditorProps> = ({
-  onLayoutChange,
+  onChange,
   editorComponents,
-  onContentChange,
 }) => {
   const [showOption, setShowOptions] = useState<boolean>(false);
   const [layouts, setLayouts] = useState<Layout[]>([]);
@@ -63,9 +63,17 @@ const SmartEditor: React.SFC<SmartEditorProps> = ({
     };
   };
 
+  const handleOnChange = () => {
+    onChange({
+      layouts,
+      contents,
+    });
+  };
+
   const onRemoveComponent = (contentToRemove: IContent) => () => {
     setLayouts(layouts.filter((l) => l.i !== contentToRemove.id));
     setContents(contents.filter((c) => c.id !== contentToRemove.id));
+    handleOnChange();
   };
 
   const onAddComponent = (componentToAdd: CustomComponent) => () => {
@@ -83,11 +91,12 @@ const SmartEditor: React.SFC<SmartEditorProps> = ({
 
     setLayouts(layouts.concat(newLayout));
     setContents(contents.concat(newContent));
+    handleOnChange();
   };
 
   const handleLayoutChange = (layout: Layout[], allLayouts: Layouts) => {
     setLayouts(layout);
-    onLayoutChange(layout, allLayouts);
+    handleOnChange();
   };
 
   const onChangeContent = (newContent: IContent) => {
@@ -96,7 +105,7 @@ const SmartEditor: React.SFC<SmartEditorProps> = ({
         return c.id === newContent.id ? newContent : c;
       }),
     );
-    onContentChange(contents);
+    handleOnChange();
     setActive(null);
   };
 

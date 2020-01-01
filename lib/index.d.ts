@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layouts, Layout } from 'react-grid-layout';
+import { Layout } from 'react-grid-layout';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 export interface IContent {
@@ -7,13 +7,13 @@ export interface IContent {
     type: string;
     attributes: any;
 }
+interface IComponent {
+    layouts: Layout[];
+    contents: IContent[];
+}
 interface SmartEditorProps {
-    editorComponents: {
-        layouts: Layout[];
-        contents: IContent[];
-    };
-    onLayoutChange: (layout: Layout[], allLayouts: Layouts) => void;
-    onContentChange: (content: IContent[]) => void;
+    editorComponents: IComponent;
+    onChange: (newComponent: IComponent) => void;
 }
 declare const SmartEditor: React.SFC<SmartEditorProps>;
 export { SmartEditor };
