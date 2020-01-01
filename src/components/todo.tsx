@@ -26,7 +26,7 @@ const CheckItem: React.FC<{
       value={item.val}
       className="sc-input-text"
       placeholder="type check item"
-      onKeyDown={handleKeyDown(item)}
+      onKeyUp={handleKeyDown(item)}
       onChange={onChange(item)}
     />
   </div>
