@@ -30,28 +30,17 @@ const SmartEditor: React.SFC<SmartEditorProps> = ({
   editorComponents,
 }) => {
   const [showOption, setShowOptions] = useState<boolean>(false);
-  const [layouts, setLayouts] = useState<Layout[]>([]);
-  const [contents, setContents] = useState<IContent[]>([]);
   const [active, setActive] = useState<string | null>(null);
+  // const [layouts, setLayouts] = useState<Layout[]>(editorComponents.layouts);
+  // const [contents, setContents] = useState<IContent[]>(
+  //   editorComponents.contents,
+  // );
+  const { layouts, contents } = editorComponents;
 
-  useEffect(() => {
-    // let accumulator: { layouts: Layout[]; contents: IContent[] } = {
-    //   layouts: [],
-    //   contents: [],
-    // };
-
-    // accumulator = editorComponents.reduce(
-    //   (acc, ec) => {
-    //     acc.layouts.push(ec.layout);
-    //     acc.contents.push(ec.content);
-    //     return acc;
-    //   },
-    //   { ...accumulator },
-    // );
-
-    setLayouts(editorComponents.layouts);
-    setContents(editorComponents.contents);
-  }, []);
+  // useEffect(() => {
+  //   setLayouts(editorComponents.layouts);
+  //   setContents(editorComponents.contents);
+  // }, [editorComponents]);
 
   const getLayout = (layouts: Layout[]): Layouts => {
     return {
@@ -63,17 +52,11 @@ const SmartEditor: React.SFC<SmartEditorProps> = ({
     };
   };
 
-  const handleOnChange = () => {
-    onChange({
-      layouts,
-      contents,
-    });
-  };
-
   const onRemoveComponent = (contentToRemove: IContent) => () => {
-    setLayouts(layouts.filter((l) => l.i !== contentToRemove.id));
-    setContents(contents.filter((c) => c.id !== contentToRemove.id));
-    handleOnChange();
+    onChange({
+      layouts: layouts.filter((l) => l.i !== contentToRemove.id),
+      contents: contents.filter((c) => c.id !== contentToRemove.id),
+    });
   };
 
   const onAddComponent = (componentToAdd: CustomComponent) => () => {
@@ -89,23 +72,26 @@ const SmartEditor: React.SFC<SmartEditorProps> = ({
       id,
     } as IContent;
 
-    setLayouts(layouts.concat(newLayout));
-    setContents(contents.concat(newContent));
-    handleOnChange();
+    onChange({
+      layouts: layouts.concat(newLayout),
+      contents: contents.concat(newContent),
+    });
   };
 
   const handleLayoutChange = (layout: Layout[], allLayouts: Layouts) => {
-    setLayouts(layout);
-    handleOnChange();
+    onChange({
+      layouts: layout,
+      contents: contents,
+    });
   };
 
   const onChangeContent = (newContent: IContent) => {
-    setContents(
-      contents.map((c) => {
+    onChange({
+      layouts: layouts,
+      contents: contents.map((c) => {
         return c.id === newContent.id ? newContent : c;
       }),
-    );
-    handleOnChange();
+    });
     setActive(null);
   };
 
